@@ -1,0 +1,175 @@
+/*   Assignment: Vue Movie Tickets - Final Project
+     CSS page of Vue Movie Tickets - Final Project
+     Author: Audrey Harmon
+     Date: December 4, 2022
+*/
+
+@charset "utf-8";
+@font-face {
+  font-family: 'StandingRoom';
+  src: url(StandingRoomOnlyNF.ttf);
+}
+
+@font-face {
+    font-family: 'Theater';
+    src: url(Theater\ Brillion\ DEMO.otf);
+}
+
+body {
+    background-image: url(background.jpg);
+    background-size: cover;
+    font-family: "Theater";
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    margin: auto;
+    letter-spacing: 1px;
+    font-size: 6em;
+    text-shadow: 2px 2px 5px darkred;
+}
+
+.line {
+    color: white;
+    margin-bottom: 30px;
+	box-shadow: 2px 2px 10px 5px white;
+}
+
+h5 {
+    font-size: 3em;
+    letter-spacing: 2px;
+    min-height: 115px;
+}
+
+movies{
+    width: max-content;
+    overflow: auto;
+    columns: 2;
+    
+}
+
+.card{
+    display: flex;
+    width: 50px;
+    break-inside: avoid;
+    background-color:rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 10px 5px black;
+}
+
+img {
+    margin: auto;
+    margin-top: 15px;
+    text-align: center;
+    box-shadow: 5px 5px 10px darkred;
+}
+
+.card-body {
+    text-align: center;
+    color: white;
+    min-height: 130px;
+    width: 100%
+}
+
+.card-footer {
+    margin: auto;
+    text-align: center;
+}
+
+.card-title{
+    text-shadow: 2px 2px 10px red;
+}
+
+.btn {
+    background-color: rgb(30, 30, 30);
+    border: 0.5px solid red;
+    box-shadow: 0px 0px 10px darkred;
+    color: white;
+    font-family: 'StandingRoom';
+    min-width: 150px;
+    margin-bottom: 10px;
+}
+
+.btn:hover {
+    background-color: red;
+    border: 1px solid black;
+    color: black;
+    box-shadow: 0px 0px 10px grey;
+}
+
+.cart {
+    max-width: 50%;
+    font-family: 'StandingRoom';
+    letter-spacing: 1px;
+}
+
+.cart-title {
+    font-size: 1.5em;
+    font-family: 'StandingRoom';
+}
+
+.remove {
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: none;
+    border: none;
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    min-width: 5px;
+    max-height: fit-content;
+    margin-bottom: none; 
+    position: absolute;
+    float: right;
+}
+
+table {
+    box-shadow: 2px 10px 5px black;
+    margin-left: 10px;
+    border: 21px solid black;
+    text-align: center;
+}
+
+td {
+    font-family: Arial, Helvetica, sans-serif;
+    min-width: 75px;
+    vertical-align: middle;
+}
+
+.movieTitle {
+    font-family: 'StandingRoom';
+    font-size: 1em;
+    width:fit-content;
+}
+
+th {
+    font-family: 'StandingRoom';
+    letter-spacing: 1px;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif
+}
+
+img{
+    max-width: 100px;
+    max-height: 190px;
+}
+
+.offcanvas {
+    width: 75%;
+}
+
+.cart-title{
+    text-align: center;
+    margin: auto;
+}
+
+footer{
+    color: white;
+    margin-top: 15px;
+}
+
+footer p {
+    font-family: 'Theater';
+    letter-spacing: 10px;
+    text-align: right;
+}

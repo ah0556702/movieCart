@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <!-- Assignment: Vue Movie Tickets - Final Project
+     Index Page of Vue Movie Tickets - Final Project
+     Author: Audrey Harmon
+     Date: December 4, 2022
+
+     filename: index.html -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+     
+     <link href="styles.css" rel="stylesheet"/>
+
+    <title>Vue Movie Tickets</title>
+
+  </head>
+
+    <body>
+        <header>
+            <h1><strong>Now Playing</strong></h1>
+            <hr class="line">
+        </header>
+        <!--
+          The Root element that will contain all of the vue data is created as a div
+          a for loop is instantiated within the element to loop through and hold all movies
+          in the movie array 
+        -->
+        <div id="root" class="card-group">
+            <!-- creates movie element -->
+            <!-- loops through the movies array and displays each movie returned using the Vue component template -->
+            <!-- binds the props to the instance values within the objects array -->
+            <movies class="movies"
+            
+                v-for="movie in movies" 
+                v-bind:movieobj=movie 
+                v-bind:image='"https://image.tmdb.org/t/p/original/" + movie.poster_path' 
+                v-bind:description="movie.overview" 
+                v-bind:title="movie.title" 
+                v-on:addTicket="addTicket($event, movie)" 
+                v-on:addChildTicket="addChildTicket($event,movie)">
+            </movies>
+            <br>
+            <!-- table represents cart and is only viewable if their is a movie in the cart array -->
+            <table v-if="cartItem > 0" class="table table-light table-hover cart"  title="Cart">
+                
+                <thead>
+                    <!-- <th></th>
+                    <th></th> -->
+                    <th colspan="5" class="cart-title">SHOPPING CART</th>
+                    <!-- <th></th>
+                    <th></th> -->
+                </thead>
+                <tr>
+                    <th scope="col">Movie</th>
+                    <th scope="col">Adult Tickets</th>
+                    <th scope="col">Children's Tickets</th>
+                    <th scope="col">Subtotal</th>
+                    <th scope="col">Edit</th>
+                </tr>
+                <!-- table body displays each movie object as its added  -->
+                <tbody v-for="movie in cart" 
+                v-bind:movieobj="movie" 
+                v-bind:image='"https://image.tmdb.org/t/p/original/" + movie.poster_path' 
+                v-bind:title="movie.title"
+                >
+                    <tr>
+                        <td class="movieTitle">{{movie.title}}</td>
+                        <td>{{movie.adultTicket}} <span><button class="remove btn" @click="removeAdult(movie)">-</button></span></td>
+                        <td>{{movie.childTicket}} <button class="remove btn" @click="removeChild(movie)">-</button></td>
+                        <td>${{movie.subtotal}}</td>
+                        <td><button class="btn" @click="removeTicket(movie)">Remove</button></td>
+                    </tr>
+                </tbody>
+                <tr>
+                    <!-- displays row data if the adult tickets is more than 0 -->
+                    <td colspan="2"></td>
+                    <td colspan="3" v-if="adultTickets < 1"></td>
+                    <td colspan="2" v-if="adultTickets > 0">Adult Subtotal: </td>
+                    <td v-if="adultTickets > 0">{{adultTickets}} @ ${{adultSubtotal}}</td>
+                </tr>
+                <tr>
+                    <!-- displays row data if child tickets is more than 0 -->
+                    <td colspan="2"></td>
+                    <td colspan="3" v-if="childTickets < 1"></td>
+                    <td colspan="2" v-if="childTickets > 0">Child Subtotal: </td>
+                    <td v-if="childTickets > 0">{{childTickets}} @ ${{childSubtotal}}</td>
+                </tr>
+                <tr>
+                    <td colspan="3"></td>
+                    <td colspan="2">Total: ${{subtotal}}</td>
+                </tr>
+            </table>
+        </div>
+
+           <footer>
+            <p><strong>Audrey Harmon &copy; 2022</strong></p>
+           </footer>
+
+    </body>
+
+    
+    <!--Vue is accessed-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="scripts.js"></script>
+
+</html>
